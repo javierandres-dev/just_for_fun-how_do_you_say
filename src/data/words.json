@@ -1,0 +1,13 @@
+[
+  { "english": "able", "spanish": "capaz", "id": 1 },
+  { "english": "absolutely", "spanish": "absolutamente", "id": 2 },
+  { "english": "act", "spanish": "actuar", "id": 3 },
+  { "english": "actually", "spanish": "en realidad", "id": 4 },
+  { "english": "afraid", "spanish": "temerozo/temeroza", "id": 5 },
+  { "english": "again", "spanish": "otra vez", "id": 6 },
+  { "english": "ago", "spanish": "hace", "id": 7 },
+  { "english": "agree", "spanish": "estar de acuerdo", "id": 8 },
+  { "english": "ahead", "spanish": "adelante", "id": 9 },
+  { "english": "air", "spanish": "aire", "id": 10 },
+  { "english": "", "spanish": "", "id": 0 }
+]
