@@ -1,8 +1,11 @@
 :root {
   --c-white: #fff;
-  --c-blue: #0a3161;
   --c-red: #b31942;
+  --c-green: #008000;
+  --c-blue: #0a3161;
+  --c-bright-green: #65fc00;
   --c-bright-blue: #09a6f3;
+  --c-bright-orange: #ff7b00;
 }
 *,
 *::before,
@@ -10,12 +13,12 @@
   box-sizing: border-box;
 }
 html {
-  height: 100%;
+  height: 100vh;
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   font-size: 1.8em;
   font-weight: 500;
@@ -23,68 +26,78 @@ body {
   color: #f8f9fa;
 }
 .title {
+  margin: 0;
+  padding: 4rem 0;
   font-size: 2em;
   font-weight: 900;
   color: var(--c-blue);
   text-align: center;
-  margin: 0;
-  padding: 4rem 0;
 }
 .card {
-  background-color: var(--c-white);
-  border: 0.1rem solid var(--c-blue);
-  border-radius: 2rem;
-  text-align: center;
-  max-width: 32rem;
-  min-height: 32rem;
+  width: 80%;
+  max-width: 30rem;
+  min-height: 30rem;
   margin: 0 auto;
   padding: 4rem 2rem;
+  border-radius: 2rem;
+  background-color: var(--c-white);
+  border: 0.1rem solid var(--c-blue);
   box-shadow: 0 0 1rem 0.1rem var(--c-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .question {
   margin: 0;
   color: var(--c-blue);
+  text-align: center;
 }
 .question-word {
-  border-bottom: 0.2rem solid var(--c-red);
+  font-size: 1.1em;
   font-weight: 700;
+  border-bottom: 0.2rem solid var(--c-bright-blue);
 }
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin-top: 4rem;
-}
-.btns {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 .btn {
   border: none;
   background: none;
-  color: var(--c-bright-blue);
-  font-size: 1.6rem;
+  font-size: 0.8em;
+  color: var(--c-bright-orange);
+  align-self: flex-start;
 }
 .answer {
   width: 100%;
-  text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   border: none;
   border-bottom: 0.1rem solid var(--c-bright-blue);
-  font-size: 1.8rem;
+  font-size: 1em;
   color: var(--c-blue);
+  text-align: center;
 }
 .answer::placeholder {
-  font-size: 1.8rem;
+  font-size: 1em;
 }
 .answer:focus {
   outline: none;
 }
 .wrong {
+  margin: 0;
+}
+.wrong-active {
   color: var(--c-red);
 }
-.wrong-word {
-  border-bottom: 0.1rem dotted var(--c-red);
+.wrong-active span {
+  font-size: 1.1em;
+  font-weight: 700;
+  border-bottom: 0.2rem solid var(--c-bright-blue);
+}
+.success {
+  border: 0.1rem solid var(--c-green);
+  box-shadow: 0 0 1rem 0.1rem var(--c-bright-green);
 }
