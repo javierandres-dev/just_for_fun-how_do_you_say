@@ -80,9 +80,17 @@ function App() {
             className='answer'
             autoFocus
           />
-          <button type='button' onClick={revealAnswer} className='btn'>
-            I don't know
-          </button>
+          <div className='btns'>
+            <button type='button' onClick={revealAnswer} className='btn'>
+              I don't know
+            </button>
+            <div className='save'>
+              <label htmlFor='save' className='save-label'>
+                Save progress
+              </label>
+              <input type='checkbox' id='save' className='save-input' />
+            </div>
+          </div>
         </form>
         <p className={wrong ? 'wrong wrong-active' : 'wrong'}>
           <span>{wrong}</span> is a wrong word.

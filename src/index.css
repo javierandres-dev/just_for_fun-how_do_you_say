@@ -64,13 +64,6 @@ body {
   align-items: center;
   gap: 2rem;
 }
-.btn {
-  border: none;
-  background: none;
-  font-size: 0.8em;
-  color: var(--c-bright-orange);
-  align-self: flex-start;
-}
 .answer {
   width: 100%;
   padding: 1rem;
@@ -85,6 +78,30 @@ body {
 }
 .answer:focus {
   outline: none;
+}
+.btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  border: none;
+  background: none;
+  font-size: 0.8em;
+  color: var(--c-bright-orange);
+}
+.save {
+  display: flex;
+  align-items: center;
+}
+.save-label {
+  font-size: 0.8em;
+  color: var(--c-green);
+}
+.save-input {
+  width: 1.2em;
+  height: 1.2em;
+  color: var(--c-green);
 }
 .wrong {
   margin: 0;
