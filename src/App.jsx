@@ -13,7 +13,10 @@ function App() {
   const inputRef = useRef();
 
   useEffect(() => {
-    if (localStorage.getItem('hdysApp')) setSave(true);
+    if (localStorage.getItem('hdysApp')) {
+      setAnswers(JSON.parse(localStorage.getItem('hdysApp')));
+      setSave(1);
+    }
   }, []);
 
   useEffect(() => {
@@ -26,8 +29,17 @@ function App() {
   }, [index]);
 
   useEffect(() => {
+    if (save === 1) {
+      setIndex(answers.length);
+      setSave(true);
+      return;
+    }
     handleSave();
   }, [save]);
+
+  useEffect(() => {
+    if (save) localStorage.setItem('hdysApp', JSON.stringify(answers));
+  }, [answers]);
 
   const handleAnswer = (e) => {
     if (wrong) setWrong('');
@@ -55,13 +67,13 @@ function App() {
     if (inputRef.current.placeholder !== 'Enter the answer') {
       inputRef.current.placeholder = 'Enter the answer';
     }
-    setAnswers([...answers, answer]);
     setTimeout(() => {
+      setAnswers([...answers, answer]);
       setAnswer('');
       if (index + 1 === words.length) setIndex(0);
       else setIndex(index + 1);
       setStatus(null);
-    }, 1000);
+    }, 500);
   };
 
   const showWrong = () => {
@@ -74,51 +86,51 @@ function App() {
   };
 
   const handleSave = () => {
-    if (save) localStorage.setItem('hdysApp', answers);
+    if (save) localStorage.setItem('hdysApp', JSON.stringify(answers));
     else localStorage.removeItem('hdysApp');
   };
 
   return (
-    <>
-      <h1 className='title'>How do you say ...</h1>
-      <section className={status === 'success' ? 'card success' : 'card'}>
-        <p className='question'>
-          How do you say <span className='question-word'>{word.spanish}</span>?
-        </p>
-        <form className='form'>
-          <input
-            type='text'
-            placeholder='Enter the answer'
-            ref={inputRef}
-            value={answer}
-            onChange={handleAnswer}
-            onKeyDown={handleKeyDown}
-            className='answer'
-            autoFocus
-          />
-          <div className='btns'>
-            <button type='button' onClick={revealAnswer} className='btn'>
-              I don't know
-            </button>
-            <div className='save'>
-              <label htmlFor='save' className='save-label'>
-                Save progress
-              </label>
-              <input
-                type='checkbox'
-                id='save'
-                className='save-input'
-                checked={save}
-                onChange={(e) => setSave(e.target.checked)}
-              />
-            </div>
+    <section className={status === 'success' ? 'card success' : 'card'}>
+      <p className='question'>
+        How do you say <span className='question-word'>{word.spanish}</span>?
+      </p>
+      <form className='form'>
+        <input
+          type='text'
+          placeholder='Enter the answer'
+          ref={inputRef}
+          value={answer}
+          onChange={handleAnswer}
+          onKeyDown={handleKeyDown}
+          className='answer'
+          autoFocus
+        />
+        <div className='btns'>
+          <button type='button' onClick={revealAnswer} className='btn'>
+            I don't know
+          </button>
+          <div className='save'>
+            <label htmlFor='save' className='save-label'>
+              Save progress
+            </label>
+            <input
+              type='checkbox'
+              id='save'
+              className='save-input'
+              checked={save}
+              onChange={(e) => setSave(e.target.checked)}
+            />
           </div>
-        </form>
-        <p className={wrong ? 'wrong wrong-active' : 'wrong'}>
-          <span>{wrong}</span> is a wrong word.
-        </p>
-      </section>
-    </>
+        </div>
+        <label className='counter'>
+          {answers.length} of {words.length}
+        </label>
+      </form>
+      <p className={wrong ? 'wrong wrong-active' : 'wrong'}>
+        <span>{wrong}</span> is a wrong word.
+      </p>
+    </section>
   );
 }
 

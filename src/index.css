@@ -20,24 +20,16 @@ html {
 body {
   height: 100vh;
   margin: 0;
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: 500;
   background-color: #f8f9fa;
   color: #f8f9fa;
-}
-.title {
-  margin: 0;
-  padding: 4rem 0;
-  font-size: 2em;
-  font-weight: 900;
-  color: var(--c-blue);
-  text-align: center;
 }
 .card {
   width: 80%;
   max-width: 30rem;
   min-height: 30rem;
-  margin: 0 auto;
+  margin: 10rem auto 0;
   padding: 4rem 2rem;
   border-radius: 2rem;
   background-color: var(--c-white);
@@ -50,6 +42,7 @@ body {
 }
 .question {
   margin: 0;
+  font-size: 1.2em;
   color: var(--c-blue);
   text-align: center;
 }
@@ -59,6 +52,7 @@ body {
   border-bottom: 0.2rem solid var(--c-bright-blue);
 }
 .form {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,6 +95,9 @@ body {
 .save-input {
   width: 1.2em;
   height: 1.2em;
+  color: var(--c-green);
+}
+.counter {
   color: var(--c-green);
 }
 .wrong {
