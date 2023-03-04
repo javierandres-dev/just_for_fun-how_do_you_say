@@ -7,8 +7,14 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [status, setStatus] = useState(null);
   const [wrong, setWrong] = useState('');
+  const [save, setSave] = useState(false);
+  const [answers, setAnswers] = useState([]);
 
   const inputRef = useRef();
+
+  useEffect(() => {
+    if (localStorage.getItem('hdysApp')) setSave(true);
+  }, []);
 
   useEffect(() => {
     if (status === 'success') nextWord();
@@ -18,6 +24,10 @@ function App() {
   useEffect(() => {
     setWord(words[index]);
   }, [index]);
+
+  useEffect(() => {
+    handleSave();
+  }, [save]);
 
   const handleAnswer = (e) => {
     if (wrong) setWrong('');
@@ -45,6 +55,7 @@ function App() {
     if (inputRef.current.placeholder !== 'Enter the answer') {
       inputRef.current.placeholder = 'Enter the answer';
     }
+    setAnswers([...answers, answer]);
     setTimeout(() => {
       setAnswer('');
       if (index + 1 === words.length) setIndex(0);
@@ -60,6 +71,11 @@ function App() {
     setWrong(answer);
     setAnswer('');
     setStatus(null);
+  };
+
+  const handleSave = () => {
+    if (save) localStorage.setItem('hdysApp', answers);
+    else localStorage.removeItem('hdysApp');
   };
 
   return (
@@ -88,7 +104,13 @@ function App() {
               <label htmlFor='save' className='save-label'>
                 Save progress
               </label>
-              <input type='checkbox' id='save' className='save-input' />
+              <input
+                type='checkbox'
+                id='save'
+                className='save-input'
+                checked={save}
+                onChange={(e) => setSave(e.target.checked)}
+              />
             </div>
           </div>
         </form>
