@@ -25,11 +25,16 @@ body {
   background-color: #f8f9fa;
   color: #f8f9fa;
 }
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card {
-  width: 80%;
-  max-width: 30rem;
-  min-height: 30rem;
-  margin: 10rem auto 0;
+  width: 90%;
+  max-width: 32rem;
+  min-height: 32rem;
   padding: 4rem 2rem;
   border-radius: 2rem;
   background-color: var(--c-white);
@@ -93,9 +98,15 @@ body {
   color: var(--c-green);
 }
 .save-input {
+  appearance: none;
   width: 1.2em;
   height: 1.2em;
-  color: var(--c-green);
+  border: 0.1em solid var(--c-bright-green);
+  border-radius: 50%;
+}
+.save-input:checked {
+  border: none;
+  background-color: var(--c-green);
 }
 .counter {
   color: var(--c-green);
